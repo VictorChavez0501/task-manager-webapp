@@ -6,7 +6,7 @@ The application includes a user interface built with HTML, CSS, and JavaScript, 
 
 The purpose of creating this software was to gain practical experience building a complete web application and strengthen my software engineering skills.
 
-[Software Demo Video](PASTE_VIDEO_LINK_HERE)
+[Software Demo Video] https://youtu.be/ZpqpRrMDR-M
 
 # Web Pages
 

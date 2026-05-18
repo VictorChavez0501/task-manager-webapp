@@ -1,3 +1,4 @@
+// Function to add a new task
 function addTask() {
 
     const input = document.getElementById('taskInput');
@@ -19,10 +20,12 @@ function addTask() {
     input.value = '';
 }
 
+// Function to delete a task
 function deleteTask(button) {
     button.parentElement.remove();
 }
 
+// Function to edit a task
 function editTask(button) {
 
     const li = button.parentElement;
