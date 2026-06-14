@@ -1,11 +1,17 @@
 // Load tasks when the page opens
 window.onload = loadTasks;
 
-// Function to load all tasks from the database
+// Function to load all tasks
 async function loadTasks() {
 
     const response = await fetch('/tasks');
     const tasks = await response.json();
+
+    displayTasks(tasks);
+}
+
+// Function to display tasks
+function displayTasks(tasks) {
 
     const taskList = document.getElementById('taskList');
 
@@ -16,10 +22,19 @@ async function loadTasks() {
         const li = document.createElement('li');
 
         li.innerHTML = `
-            <span>${task.name}</span>
+            <span>
+                ${task.name}
+                (${task.created_at || 'No Date'})
+            </span>
+
             <div>
-                <button onclick="editTask(${task.id})">Edit</button>
-                <button onclick="deleteTask(${task.id})">Delete</button>
+                <button onclick="editTask(${task.id})">
+                    Edit
+                </button>
+
+                <button onclick="deleteTask(${task.id})">
+                    Delete
+                </button>
             </div>
         `;
 
@@ -27,7 +42,27 @@ async function loadTasks() {
     });
 }
 
-// Function to add a new task
+// Filter tasks by date range
+async function filterTasks() {
+
+    const start = document.getElementById('startDate').value;
+    const end = document.getElementById('endDate').value;
+
+    if (!start || !end) {
+        alert('Please select both dates.');
+        return;
+    }
+
+    const response = await fetch(
+        `/tasks/filter?start=${start}&end=${end}`
+    );
+
+    const tasks = await response.json();
+
+    displayTasks(tasks);
+}
+
+// Function to add a task
 async function addTask() {
 
     const input = document.getElementById('taskInput');
@@ -57,7 +92,9 @@ async function addTask() {
 // Function to edit a task
 async function editTask(id) {
 
-    const newTask = prompt('Enter the new task name:');
+    const newTask = prompt(
+        'Enter the new task name:'
+    );
 
     if (!newTask || newTask.trim() === '') {
         return;

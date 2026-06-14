@@ -25,45 +25,59 @@ const db = new sqlite3.Database('./tasks.db', (err) => {
 db.run(`
     CREATE TABLE IF NOT EXISTS tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL
+        name TEXT NOT NULL,
+        created_at TEXT NOT NULL
     )
 `);
 
 // ======================
 // READ - Get all tasks
 // ======================
-app.get('/tasks', (req, res) => {
-    db.all('SELECT * FROM tasks', [], (err, rows) => {
-        if (err) {
-            res.status(500).json(err);
-        } else {
-            res.json(rows);
+app.get('/tasks/filter', (req, res) => {
+
+    const startDate = req.query.start;
+    const endDate = req.query.end;
+
+    db.all(
+        'SELECT * FROM tasks WHERE created_at BETWEEN ? AND ?',
+        [startDate, endDate],
+        (err, rows) => {
+
+            if (err) {
+                res.status(500).json(err);
+            } else {
+                res.json(rows);
+            }
         }
-    });
+    );
 });
 
 // ======================
 // CREATE - Add task
 // ======================
 app.post('/tasks', (req, res) => {
+
     const { name } = req.body;
 
+    const created_at = new Date().toISOString().split('T')[0];
+
     db.run(
-        'INSERT INTO tasks (name) VALUES (?)',
-        [name],
+        'INSERT INTO tasks (name, created_at) VALUES (?, ?)',
+        [name, created_at],
         function (err) {
+
             if (err) {
                 res.status(500).json(err);
             } else {
                 res.json({
                     id: this.lastID,
-                    name
+                    name,
+                    created_at
                 });
             }
         }
     );
 });
-
 // ======================
 // UPDATE - Edit task
 // ======================
