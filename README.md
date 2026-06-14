@@ -1,40 +1,72 @@
-# Overview
+# SQL Relational Databases Project
 
-This software is a simple web application that allows users to create, edit, and delete tasks. The project was developed to improve my understanding of full stack web development and how front-end and back-end technologies work together.
+## Overview
 
-The application includes a user interface built with HTML, CSS, and JavaScript, along with backend functionality using Node.js. The software stores and manages user data and demonstrates basic CRUD operations.
+As a software engineer, I am continuously improving my understanding of full stack development and database management. This project helped me learn how relational databases interact with web applications and how data can be stored permanently using SQL.
 
-The purpose of creating this software was to gain practical experience building a complete web application and strengthen my software engineering skills.
+This software is a Task Manager web application built with Node.js, Express, SQLite, HTML, CSS, and JavaScript.
 
-[Software Demo Video] https://youtu.be/ZpqpRrMDR-M
+The application allows users to create, view, update, and delete tasks. All task information is stored in a SQLite relational database instead of temporary memory, allowing data to persist between sessions.
 
-# Web Pages
+The purpose of creating this software was to learn how to connect a relational database to a web application and implement CRUD (Create, Read, Update, Delete) operations using SQL queries.
 
-The application contains the following pages:
+[Software Demo Video](PASTE_YOUR_VIDEO_LINK_HERE)
 
-- Home Page
-- Task Management Page
-- Login/Register Page
+---
 
-# Development Environment
+## Relational Database
 
-The following tools were used to develop this software:
+This project uses SQLite as the relational database management system.
 
-- Visual Studio Code
-- Git
-- GitHub
-- Node.js
+Database Table:
 
-Programming Languages and Technologies:
+**tasks**
 
-- HTML
-- CSS
-- JavaScript
-- Node.js
+| Column | Type                              |
+| ------ | --------------------------------- |
+| id     | INTEGER PRIMARY KEY AUTOINCREMENT |
+| name   | TEXT NOT NULL                     |
 
-# Useful Websites
+The database stores task information and supports CRUD operations through SQL queries.
 
-* [Node.js](https://nodejs.org/)
-* [MDN Web Docs](https://developer.mozilla.org/)
-* [GitHub](https://github.com/)
-* [W3Schools](https://www.w3schools.com/)
+---
+
+## Development Environment
+
+Tools used:
+
+* Visual Studio Code
+* Node.js
+* Express.js
+* SQLite3
+* Git
+* GitHub
+
+Programming Languages:
+
+* JavaScript
+* SQL
+* HTML
+* CSS
+
+---
+
+## Useful Websites
+
+* https://nodejs.org/en/docs
+* https://expressjs.com/
+* https://www.sqlite.org/docs.html
+* https://developer.mozilla.org/
+* https://github.com/
+
+---
+
+## Future Work
+
+Possible improvements for future versions include:
+
+* Add task completion status.
+* Add due dates for tasks.
+* Add task categories.
+* Improve user authentication and security.
+* Deploy the application online.
