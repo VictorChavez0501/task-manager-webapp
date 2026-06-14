@@ -10,7 +10,8 @@ The application allows users to create, view, update, and delete tasks. All task
 
 The purpose of creating this software was to learn how to connect a relational database to a web application and implement CRUD (Create, Read, Update, Delete) operations using SQL queries.
 
-[Software Demo Video](PASTE_YOUR_VIDEO_LINK_HERE)
+[Software Demo Video] https://www.loom.com/share/417ad8581d17496c9050475a7200c28c
+
 
 ---
 
